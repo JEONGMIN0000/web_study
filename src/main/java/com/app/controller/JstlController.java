@@ -36,7 +36,7 @@ public class JstlController {
 		
 		//  ${listSize}
 		
-		// userType : "user" "admin"
+		// userType : "user" / "admin"
 		model.addAttribute("userType", "admin");  
 		
 		model.addAttribute("isLogin", true);	//true O  false X
