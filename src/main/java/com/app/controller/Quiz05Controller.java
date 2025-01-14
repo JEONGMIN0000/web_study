@@ -17,7 +17,7 @@ import com.app.dto.ResponseItem;
 public class Quiz05Controller {
 	
 	//1
-	
+	/*
 	//1-1
 	@RequestMapping("/request1-1")
 	public String request1_1(HttpServletRequest request) {
@@ -112,4 +112,6 @@ public class Quiz05Controller {
 		
 		return "/quiz/quiz05/view";
 	}
+	*/
 }
+
