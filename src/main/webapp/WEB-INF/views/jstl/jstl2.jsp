@@ -30,9 +30,10 @@
 	
 <!-- 이동	 -->
 <%-- 	<c:redirect url="/jstl1"/> --%>
+<%--	
 	<script>
 		location.href = "/jstl1";
 	</script>
-
+--%>
 </body>
 </html>
