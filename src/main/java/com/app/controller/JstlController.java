@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.app.dto.DrinkItem;
@@ -137,7 +138,7 @@ public class JstlController {
 			List<Member> memberList = new ArrayList<Member>();
 			
 			for(int i=1; i<=5; i++) {
-				memberList.add(new Member("아이디"+i, "비번"+i, "이름"+i, "basic"));
+				memberList.add(new Member("아이디"+i, "비번"+i, "이름"+i));
 			}
 			
 			model.addAttribute("memberList", memberList);
@@ -147,6 +148,67 @@ public class JstlController {
 		
 		//return "jstl/listTest"; //잘못 접근 시 보여줄 페이지
 	}
+	
+	//Redirect
+	
+	@GetMapping("/jstl/listTest/{type}")
+	public String listTestPath(@PathVariable String type, Model model) {
+
+		if(type.equals("str")) {
+			model.addAttribute("msg", "스트링 리스트입니다.");
+
+			List<String> msgList = new ArrayList<String>();
+			for(int i=1; i<=15; i++)
+				msgList.add("스트링 리스트입니다.");
+
+			model.addAttribute("msgList", msgList);
+
+			return "jstl/str";
+		} else {		
+			//if(type.equals("member")) {
+			List<Member> memberList = new ArrayList<Member>();
+
+			for(int i=1; i<=5; i++) {
+				memberList.add(new Member("아이디"+i, "비번"+i, "이름"+i));
+			}
+
+			model.addAttribute("memberList", memberList);
+
+			return "jstl/member";
+		}
+
+	}
+	
+	/*
+	@GetMapping("/jstl/listTest/str")
+	public String listTestStr(Model model) {
+		model.addAttribute("msg", "스트링 리스트입니다.");
+
+		List<String> msgList = new ArrayList<String>();
+		for(int i=1; i<=15; i++)
+			msgList.add("스트링 리스트입니다.");
+
+		model.addAttribute("msgList", msgList);
+
+		return "jstl/str";
+	}
+
+	@GetMapping("/jstl/listTest/member")
+	public String listTestMember(Model model) {
+
+		List<Member> memberList = new ArrayList<Member>();
+
+		for(int i=1; i<=5; i++) {
+			memberList.add(new Member("아이디"+i, "비번"+i, "이름"+i));
+		}
+
+		model.addAttribute("memberList", memberList);
+
+		return "jstl/member";
+
+		//return "jstl/listTest"; //잘못 접근 시 보여줄 페이지
+	}
+	 */
 	
 	
 }
