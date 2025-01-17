@@ -1,6 +1,6 @@
-package com.app.dto;
+package com.app.dto.study;
 
-public class ProductRequestForm {
+public class Product {
 	
 	public String id;
 	public String name;
@@ -25,6 +25,18 @@ public class ProductRequestForm {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+	
+	
+//	public String id;
+//	public String name;
+//	private int price;
+//	
+//	public void setPrice(int price) {
+//		if(price<0) {
+//			price=0;
+//		}
+//	}
+	
 	
 
 }
