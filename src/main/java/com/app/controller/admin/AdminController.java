@@ -29,9 +29,11 @@ public class AdminController {
 	public String registerRoomAction(Room room) {
 		
 		//넘어온 값 확인
-		//System.out.println(room.toString());
+		System.out.println(room.toString());
 		
 		//등록
+		int result = roomService.saveRoom(room);
+		System.out.println(result);
 		
 		return "admin/registerRoom";
 	}
