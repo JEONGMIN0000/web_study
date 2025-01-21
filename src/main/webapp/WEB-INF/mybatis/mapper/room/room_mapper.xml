@@ -3,12 +3,17 @@
 
 <mapper namespace="room_mapper">
 	<insert id="saveRoom" parameterType="Room">
-		INSERT INTO T_ROOM values ( SEQ_T_ROOM_PK.nextval, 
-										#{buildingNumber}, 
-										#{roomNumber}, 
-										#{floor}, 
-										#{maxGuestCount}, 
-										#{viewType} )
+		INSERT INTO T_ROOM values (
+		SEQ_T_ROOM_PK.nextval,
+		#{buildingNumber},
+		#{roomNumber},
+		#{floor},
+		#{maxGuestCount},
+		#{viewType} )
 	</insert>
-	
+
+	<select id="findRoomList" resultType="Room">
+		SELECT * FROM T_ROOM
+	</select>
+
 </mapper>
