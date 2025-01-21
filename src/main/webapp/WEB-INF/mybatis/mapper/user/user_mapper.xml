@@ -3,4 +3,15 @@
 
 <mapper namespace="user_mapper">
 	
+	
+<!-- 	<insert id="saveUser" parameterType="User"> -->
+<!-- 		INSERT INTO T_USER (id, name, user_type) -->
+<!-- 		VALUES(#{id}, #{name},	'CUS') -->
+<!-- 	</insert> -->
+	
+	<insert id="saveUser" parameterType="User">
+		INSERT INTO T_USER
+		VALUES(#{id}, #{pw}, #{name}, #{userType})
+	</insert>
+	
 </mapper>
