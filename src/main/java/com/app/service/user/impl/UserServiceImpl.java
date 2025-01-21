@@ -1,5 +1,7 @@
 package com.app.service.user.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,12 @@ public class UserServiceImpl implements UserService{
 		user.setUserType("ADM");
 		int result = userDAO.saveUser(user);
 		return result;
+	}
+
+	@Override
+	public List<User> findUserList() {
+		 List<User> userList = userDAO.findUserList();
+		return userList;
 	}
 
 }
