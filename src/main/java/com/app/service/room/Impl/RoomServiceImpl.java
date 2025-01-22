@@ -60,4 +60,10 @@ public class RoomServiceImpl implements RoomService {
 		return result;
 	}
 
+	@Override
+	public int modifyRoom(Room room) {
+		int result = roomDAO.modifyRoom(room);
+		return result;
+	}
+
 }

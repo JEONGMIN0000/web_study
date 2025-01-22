@@ -29,7 +29,8 @@
 			</a>
 			
 <%-- 			<button type="button" onclick="location.href='/admin/removeRoom?roomId=${room.roomId}'"> 삭제하기 </button> --%>
-			<button type="button" id="btnRemoveRoom" onclick="removeRoom(${room.roomId})"> 삭제하기 </button>
+			<button type="button" onclick="removeRoom(${room.roomId})"> 삭제하기 </button>
+			<button type="button" onclick="modifyRoom(${room.roomId})"> 수정하기 </button>
 		</p>
 	</c:forEach>
 	
@@ -45,6 +46,11 @@
 				location.href='/admin/removeRoom?roomId=' + roomId;
 			} 
 		}	
+		
+		function modifyRoom(roomId){
+			location.href='/admin/modifyRoom?roomId=' + roomId;
+		}	
+		
 	</script>
 		
 </body>
