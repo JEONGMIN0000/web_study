@@ -46,12 +46,14 @@ public class UserServiceImpl implements UserService{
 	public User checkUserLogin(User user) {
 		
 		// 1) 서비스 자체에서 로직을 수행
+		/*
 		User loginUser = userDAO.findUserById(user.getId());
 		if(loginUser != null && user.getPw().equals(loginUser.getPw())
 				&& loginUser.getUserType().equals(user.getUserType())) { //해당 id에 맞는 계정이 있고 비밀번호와 usertype이 같다
 			return loginUser;
 		} 
 		return null;
+		*/
 		
 		//아이디&비번 맞으면 loginUser
 		//아이디X?  아이디O & 비번X  null
@@ -71,6 +73,9 @@ public class UserServiceImpl implements UserService{
 		
 		// 2) DAO -> Mapper 쿼리를 만들어서 비교하는 방법
 		
+		User loginUser = userDAO.checkUserLogin(user);
+		return loginUser; //값 O 로그인정보 O
+		//null 로그인 정보 X
 		
 	}
 	
