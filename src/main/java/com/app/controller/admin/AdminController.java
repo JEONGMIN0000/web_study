@@ -129,7 +129,6 @@ public class AdminController {
 	}
 
 	// 고객관리/등록
-	
 	@GetMapping("/admin/users/add")
 	public String saveUser() {
 		return "admin/saveUser";
@@ -159,6 +158,47 @@ public class AdminController {
 		model.addAttribute("userList",userList);
 		
 		return "admin/users";
+	}
+	
+	//특정 고객 조회
+	@GetMapping("/admin/user/{id}")
+	public String user(@PathVariable String id, Model model) {
+		
+		
+		User user = userService.findUserById(id);
+		model.addAttribute("user", user);
+		
+		return "/admin/user";
+	}
+	
+	//고객 정보 수정
+	@GetMapping("/admin/modifyUser")
+	public String modifyUser(HttpServletRequest request) {
+		
+		String userId = request.getParameter("id");
+		
+		// userId -> 해당 고객에 대한 정보 조회
+		// 화면에 세팅
+		User user = userService.findUserById(userId);
+		
+		request.setAttribute("user", user);
+		
+		return "admin/modifyUser";
+	}
+	
+	@PostMapping("/admin/modifyUser")
+	public String modifyUserAction(User user) {
+		
+		int result = userService.modifyUser(user);
+		System.out.println("고객 수정 처리 결과 : " + result);
+		
+
+		if(result > 0) { //수정성공 -> 목록 or 고객 상세정보 페이지
+			return "redirect:/admin/user/" + user.getId();
+		} else { //수정실패 -> 다시 수정페이지로
+			return "redirect:/admin/modifyUser/" + user.getId();
+		}
+			
 	}
 
 }

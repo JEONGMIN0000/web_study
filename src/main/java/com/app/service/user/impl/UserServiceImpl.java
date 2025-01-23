@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.app.common.CommonCode;
+import com.app.dao.room.RoomDAO;
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.User;
 import com.app.service.user.UserService;
@@ -83,6 +84,12 @@ public class UserServiceImpl implements UserService{
 	public User findUserById(String id) {
 		 User user = userDAO.findUserById(id);
 		return user;
+	}
+
+	@Override
+	public int modifyUser(User user) {
+		int result = userDAO.modifyUser(user);
+		return result;
 	}
 
 }

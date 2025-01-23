@@ -17,4 +17,6 @@ public interface UserService {
 	
 	User findUserById(String id);
 
+	int modifyUser(User user);
+
 }
