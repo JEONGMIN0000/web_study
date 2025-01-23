@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.User;
+import com.app.dto.user.UserSearchCondition;
 
 @Repository
 public interface UserDAO {
@@ -19,5 +20,7 @@ public interface UserDAO {
 	public User checkUserLogin(User user);
 	
 	int modifyUser(User user);
+	
+	public List<User> findUserListBySearchCondition(UserSearchCondition userSearchCondition);
 
 }
