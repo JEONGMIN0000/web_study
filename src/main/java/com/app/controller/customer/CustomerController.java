@@ -7,9 +7,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.app.common.ApiCommonCode;
 import com.app.common.CommonCode;
+import com.app.dto.api.ApiResponse;
+import com.app.dto.api.ApiResponseHeader;
 import com.app.dto.user.User;
+import com.app.dto.user.UserDupCheck;
 import com.app.service.user.UserService;
 import com.app.util.LoginManager;
 
@@ -37,6 +44,61 @@ public class CustomerController {
 		}else {
 			return "customer/signup";
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("/customer/checkDupId")
+	public String checkDupId(@RequestBody String data) {
+		
+		//..
+		System.out.println("/customer/checkDupId 요청 들어옴");
+		System.out.println(data);
+		
+		//매개변수 data : 중복 여부를 확인하고 싶은 아이디
+		
+		//id 중복 여부 체크 -> 결과 return 
+		boolean result = userService.isDuplicatedId(data); // 비교할  id
+		
+		if(result) { 
+			return "Y";  //중복 O -> Y
+		} else { 
+			return "N";  //중볻 X -> N
+		}
+		
+		//return "ok dupcheckid";
+	}
+	
+	@ResponseBody
+	@RequestMapping("/customer/checkDupIdJson")
+	public ApiResponse<String> checkDupIdJson(@RequestBody UserDupCheck userDupCheck) {
+												// id : '' type : ''
+												//JSON Format Text -> UserDupCheck 객체 형태로 파싱
+		
+		//..
+		System.out.println("/customer/checkDupId 요청 들어옴");
+		System.out.println(userDupCheck); //JSON Format Text -> parse (json-simple, Jackson)
+		
+		//매개변수 data : 중복 여부를 확인하고 싶은 아이디
+		
+		//id 중복 여부 체크 -> 결과 return 
+		boolean result = userService.isDuplicatedId(userDupCheck.getId()); // 비교할  id
+		
+		ApiResponse<String> apiResponse = new ApiResponse<String>();
+		ApiResponseHeader header = new ApiResponseHeader();
+		header.setResultCode(ApiCommonCode.API_RESULT_SUCCESS);
+		header.setResultMessage(ApiCommonCode.API_RESULT_SUCCESS_MSG);
+		
+		apiResponse.setHeader(header);
+		
+		if(result) { 
+			apiResponse.setBody("Y");//중복 O -> Y
+			
+		} else { 
+			apiResponse.setBody("N"); //중복 X -> N
+		}
+		
+		return apiResponse;
+	
 	}
 	
 	@GetMapping("/customer/login")
