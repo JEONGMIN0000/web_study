@@ -12,6 +12,9 @@ import com.app.dto.user.User;
 import com.app.dto.user.UserSearchCondition;
 import com.app.service.user.UserService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class UserServiceImpl implements UserService{
 	
@@ -35,6 +38,10 @@ public class UserServiceImpl implements UserService{
 	public int saveAdminUser(User user) {
 		user.setUserType(CommonCode.USERTYPE_ADMIN);
 		int result = userDAO.saveUser(user);
+		
+		System.out.println("user가 무슨 값이 들어가는지 확인" + user);
+		log.info("user가 무슨 값이 들어가는지 확인" + user);
+		
 		return result;
 	}
 
