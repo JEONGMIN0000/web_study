@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	h1{
+		color: red;
+	}
+</style>
+
+<!-- <link href="../../resources/css/main.css" rel="stylesheet"> -->
+<link href="/css/main.css" rel="stylesheet">
+
 </head>
 <body>
 	<h1>메인페이지</h1>
@@ -23,5 +32,10 @@
 		<button onclick="location.href='/customer/mypage'">마이페이지</button>
 	</c:if>
 	
+	<script>
+		console.log('main 페이지 접속 콘솔 로그');
+	</script>
+	
+	<script src="/js/main/js"></script>
 </body>
 </html>
