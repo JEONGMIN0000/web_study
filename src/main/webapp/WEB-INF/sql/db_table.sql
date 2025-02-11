@@ -19,3 +19,10 @@ CREATE TABLE T_USER (
     name VARCHAR2(32) NOT NULL,
     user_type VARCHAR(8) NOT NULL
 );
+
+CREATE TABLE file_info(
+    file_name VARCHAR2(256), 
+    original_file_name VARCHAR2(256), 
+    file_path VARCHAR2(256), 
+    url_file_path VARCHAR2(256)
+);

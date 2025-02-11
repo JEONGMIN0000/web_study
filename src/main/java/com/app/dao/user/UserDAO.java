@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import com.app.dao.user.UserDAO;
 import com.app.dto.user.User;
+import com.app.dto.user.UserProfileImage;
 import com.app.dto.user.UserSearchCondition;
 
 @Repository
@@ -22,5 +23,9 @@ public interface UserDAO {
 	int modifyUser(User user);
 	
 	public List<User> findUserListBySearchCondition(UserSearchCondition userSearchCondition);
+	
+	public int saveUserProfileImage(UserProfileImage userProfileImage);
+	
+	public UserProfileImage findUserProfileImageById(String id);
 
 }
